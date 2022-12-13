@@ -1,7 +1,8 @@
+import Link from 'next/link'
+
 import { AtLogo } from '@/components/atoms'
 import { MlModalScreen, MlSocialList } from '@/components/molecules'
 import { menuOptions } from '@/utils/commons'
-import Link from 'next/link'
 
 interface OrNavigationMenuProps {
   show: boolean

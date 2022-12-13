@@ -1,7 +1,8 @@
 import Link from 'next/link'
-import { MenuOption } from 'types'
-import { MlSocialList } from '@/components/molecules'
+
+import { MenuOption } from '@/types/index'
 import { AtLogo } from '@/components/atoms'
+import { MlSocialList } from '@/components/molecules'
 
 const homeSection: MenuOption[] = [
   { name: 'Home', path: '/' },

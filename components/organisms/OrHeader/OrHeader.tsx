@@ -1,9 +1,10 @@
+import Link from 'next/link'
+import { RiMenuFill } from 'react-icons/ri'
+import { useState } from 'react'
+
 import { AtButtonIcon, AtLogo } from '@/components/atoms'
 import { OrNavigationMenu } from '@/components/organisms'
-import { RiMenuFill } from 'react-icons/ri'
 import { menuOptions } from '@/utils/commons'
-import Link from 'next/link'
-import { useState } from 'react'
 
 export const OrHeader = () => {
   // check user session

@@ -1,9 +1,10 @@
-import { Layout } from '@/components/templates'
-import { OrHero } from '@/components/organisms'
-import { PersonData } from 'types'
-import { MlCard } from '@/components/molecules'
-import { AtButton } from '@/components/atoms'
 import Link from 'next/link'
+
+import { AtButton } from '@/components/atoms'
+import { MlCard } from '@/components/molecules'
+import { OrHero } from '@/components/organisms'
+import { Layout } from '@/components/templates'
+import { PersonData } from '@/types/index'
 
 const peopleData: PersonData[] = [
   {

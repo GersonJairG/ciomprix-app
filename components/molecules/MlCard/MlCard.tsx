@@ -18,13 +18,7 @@ export const MlCard = ({
   return (
     <div className="w-80 md:w-64 xl:w-80 flex flex-col justify-center items-center mx-auto">
       <div className="w-80 md:w-64 xl:w-80 h-44 relative mb-4">
-        <Image
-          sizes=""
-          src={img}
-          fill
-          alt="Profile"
-          className="object-cover"
-        />
+        <Image sizes="" src={img} fill alt="Profile" className="object-cover" />
       </div>
 
       <div className="flex flex-col text-start divide-y">
