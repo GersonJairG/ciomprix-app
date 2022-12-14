@@ -5,7 +5,7 @@ const phoneRegExp =
 
 export const SignUpFormSchema = Yup.object().shape({
   name: Yup.string().required('Name is required'),
-  phoneNumber: Yup.string()
+  phone: Yup.string()
     .required('Phone number is required')
     .length(10, 'Password must be 10 characters')
     .matches(phoneRegExp, 'Phone number is not valid'),

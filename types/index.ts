@@ -17,7 +17,7 @@ export interface MenuOption {
 
 export interface SignUpFields {
   name: string
-  phoneNumber: string
+  phone: string
   email: string
   password: string
   confirmPassword: string

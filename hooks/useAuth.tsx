@@ -1,5 +1,5 @@
 import { useSelector, useDispatch } from 'react-redux'
-import { setUser, logOut, selectUser } from '@/slices/authSlice'
+import { setUser, logOut as logout, selectUser } from '@/slices/authSlice'
 
 import { ValidUser } from '@/types/user'
 import { validateUser } from '@/services/users'
@@ -15,6 +15,10 @@ function useAuth() {
       return
     }
     dispatch(setUser(userInfo))
+  }
+
+  async function logOut() {
+    dispatch(logout())
   }
 
   return { user, logIn, logOut }

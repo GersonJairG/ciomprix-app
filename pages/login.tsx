@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react'
 import Image from 'next/image'
+import { useRouter } from 'next/router'
 
 import loginSvg from '/public/images/login.svg'
 import { Layout } from '@/components/templates'
@@ -9,16 +10,17 @@ import type { LoginFields, Status } from '@/types/index'
 import useAuth from 'hooks/useAuth'
 
 export default function Login() {
-
+  const { push: redirect } = useRouter()
   const { logIn } = useAuth()
 
   const [showAlert, setShowAlert] = useState<boolean>(false)
   const [msgAlert, setMsgAlert] = useState<string>('')
   const [typeAlert, setTypeAlert] = useState<Status>('success')
 
-  // function login(data: LoginFields) {
-  //   console.log('data login: ', data)
-  // }
+  function signIn(data: LoginFields) {
+    logIn(data)
+    redirect('/')
+  }
 
   function forgotPassword() {
     console.log('This functionality will be available later.')
@@ -55,7 +57,7 @@ export default function Login() {
             </div>
           </div>
           <div className="w-full sm:max-w-sm mx-5">
-            <MlLoginForm login={logIn} />
+            <MlLoginForm login={signIn} />
           </div>
         </div>
       </main>

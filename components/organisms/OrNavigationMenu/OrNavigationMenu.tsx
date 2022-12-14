@@ -1,8 +1,11 @@
 import Link from 'next/link'
 
 import { AtLogo } from '@/components/atoms'
-import { MlModalScreen, MlSocialList } from '@/components/molecules'
+import { MlModalScreen, MlSocialList, MlUserInfo } from '@/components/molecules'
 import { menuOptions } from '@/utils/commons'
+import useAuth from 'hooks/useAuth'
+
+import { RiLogoutBoxFill } from 'react-icons/ri'
 
 interface OrNavigationMenuProps {
   show: boolean
@@ -10,8 +13,7 @@ interface OrNavigationMenuProps {
 }
 
 export const OrNavigationMenu = ({ show, onClose }: OrNavigationMenuProps) => {
-  // check user session
-  const user = false
+  const { user, logOut } = useAuth()
 
   return (
     <MlModalScreen show={show} onClose={onClose}>
@@ -21,10 +23,9 @@ export const OrNavigationMenu = ({ show, onClose }: OrNavigationMenuProps) => {
           <span className="text-sm text-neutral-100">
             A Powerfull Influencer Marketing Platform for Advertisers
           </span>
-          <div className="mt-12 flex items-center uppercase justify-end">
-            {user ? (
-              <div>Name and photo</div>
-            ) : (
+
+          {!user && (
+            <div className="mt-12 flex items-center uppercase justify-end">
               <div className="flex items-center space-x-4">
                 <Link
                   href={'/login'}
@@ -41,9 +42,10 @@ export const OrNavigationMenu = ({ show, onClose }: OrNavigationMenuProps) => {
                   <span className="block w-full">Signup</span>
                 </Link>
               </div>
-            )}
-          </div>
+            </div>
+          )}
         </div>
+        {user && <MlUserInfo simple {...user} />}
         <ul className="mt-4 mb-20 px-4 flex-col">
           {menuOptions.map(({ name, path }) => (
             <li key={path}>
@@ -57,9 +59,19 @@ export const OrNavigationMenu = ({ show, onClose }: OrNavigationMenuProps) => {
             </li>
           ))}
         </ul>
-        <div className='flex justify-end px-4'>
-        <MlSocialList />
+        <div className="flex justify-end px-4">
+          <MlSocialList />
         </div>
+        {user && (
+          <div className="flex border-t my-6 pt-4 border-t-pink-300 justify-end">
+            <button className="flex items-center" onClick={logOut}>
+              <RiLogoutBoxFill className="w-5 h-5 text-pink-500" />
+              <span className="hover:text-pink-500 hover:underline underline-offset-2">
+                Log out
+              </span>
+            </button>
+          </div>
+        )}
       </div>
     </MlModalScreen>
   )

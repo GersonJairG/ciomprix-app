@@ -38,8 +38,8 @@ export const MlSignupForm = ({ signUp }: MlSignupFormProps) => {
       <AtInput
         className="mb-4"
         placeholder="Phone"
-        {...register('phoneNumber')}
-        error={errors.phoneNumber?.message}
+        {...register('phone')}
+        error={errors.phone?.message}
       />
       <AtInput
         className="mb-4"

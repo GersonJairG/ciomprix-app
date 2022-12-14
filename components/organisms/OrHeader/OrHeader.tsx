@@ -8,14 +8,14 @@ import { menuOptions } from '@/utils/commons'
 import type { Theme } from '@/types/index'
 import { useRouter } from 'next/router'
 import useAuth from 'hooks/useAuth'
+import { MlUserInfo } from '@/components/molecules'
 
 interface OrHeaderProps {
   theme?: Theme
 }
 
 export const OrHeader = ({ theme = 'dark' }: OrHeaderProps) => {
-
-  const { user } = useAuth()
+  const { user, logOut } = useAuth()
 
   const { pathname } = useRouter()
 
@@ -53,11 +53,11 @@ export const OrHeader = ({ theme = 'dark' }: OrHeaderProps) => {
               </li>
             ))}
           </ul>
-          <div className="flex items-center uppercase px-4">
+          <div className="flex items-center px-4">
             {user ? (
-              <div>{user.name}</div>
+              <MlUserInfo logOut={logOut} {...user} />
             ) : (
-              <div className="flex items-center space-x-4">
+              <div className="flex items-center uppercase space-x-4">
                 {pathname !== '/login' && (
                   <Link
                     href={'/login'}

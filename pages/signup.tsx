@@ -6,14 +6,25 @@ import { Layout } from '@/components/templates'
 import { MlSignupForm } from '@/components/molecules'
 import { AtAlert } from '@/components/atoms'
 import type { SignUpFields, Status } from '@/types/index'
+import { useRouter } from 'next/router'
+import useAuth from 'hooks/useAuth'
+import { createUser } from '@/services/users'
 
 export default function SignUp() {
+  
+  const { push: redirect } = useRouter()
+
   const [showAlert, setShowAlert] = useState<boolean>(false)
   const [msgAlert, setMsgAlert] = useState<string>('')
   const [typeAlert, setTypeAlert] = useState<Status>('success')
 
-  function signUp(data: SignUpFields) {
-    console.log('data sign up: ', data)
+  async function signUp(data: SignUpFields) {
+    const response = await createUser(data)
+    if (!response) {
+      console.log('An error has occurred')
+      return
+    }
+    redirect('/login')
   }
 
   useEffect(() => {
