@@ -1,7 +1,7 @@
 import loginSvg from '../public/images/login.svg'
 import Image from 'next/image'
 import { Layout } from '@/components/templates'
-import { LoginForm } from '@/components/molecules'
+import { MlLoginForm } from '@/components/molecules'
 import { AtAlert } from '@/components/atoms'
 import { useEffect, useState } from 'react'
 import { Status } from '../types'
@@ -51,7 +51,7 @@ export default function Login() {
             </div>
           </div>
           <div className="w-full sm:max-w-sm mx-5">
-            <LoginForm loginAction={login} forgotPassword={forgotPassword} />
+            <MlLoginForm loginAction={login} forgotPassword={forgotPassword} />
           </div>
         </div>
       </main>
