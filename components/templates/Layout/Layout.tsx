@@ -5,15 +5,20 @@ import { Theme } from '@/types/index'
 
 interface LayoutProps {
   theme?: Theme
+  withoutFooter?: boolean
   children: ReactNode
 }
 
-export const Layout = ({ theme = 'dark', children }: LayoutProps) => {
+export const Layout = ({
+  theme = 'dark',
+  withoutFooter = false,
+  children,
+}: LayoutProps) => {
   return (
     <>
       <OrHeader theme={theme} />
       {children}
-      <OrFooter />
+      {!withoutFooter && <OrFooter />}
     </>
   )
 }

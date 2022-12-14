@@ -4,7 +4,7 @@ import {
   RiInformationFill,
   RiAlertFill,
   RiNotification3Fill,
-  RiCloseLine
+  RiCloseLine,
 } from 'react-icons/ri'
 
 import { Status } from '@/types/index'
@@ -23,16 +23,14 @@ export const AtAlert = ({
   children,
   status = 'success',
 }: AtAlertProps) => {
-  let color = getColorByStatus(status)
-
   return (
     <>
       {show && (
         <div
-          className={`bg-${color}-100 text-${color}-700 rounded-lg py-4 px-6 text-sm inline-flex items-center justify-between w-full`}
+          className={`rounded-lg py-4 px-6 text-sm inline-flex items-center justify-between w-full bg-blue-100 text-blue-700`}
           role="alert"
         >
-          <div className='flex space-x-3 items-center'>
+          <div className="flex space-x-3 items-center">
             {status === 'success' && (
               <RiCheckboxCircleFill className="w-5 h-5" />
             )}
@@ -43,7 +41,7 @@ export const AtAlert = ({
             {status === 'info' && <RiInformationFill className="w-5 h-5" />}
             <span>{children}</span>
           </div>
-          <RiCloseLine onClick={onClose} className='w-5 h-5 cursor-pointer' />
+          <RiCloseLine onClick={onClose} className="w-5 h-5 cursor-pointer" />
         </div>
       )}
     </>
