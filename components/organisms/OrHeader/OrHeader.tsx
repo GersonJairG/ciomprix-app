@@ -6,6 +6,7 @@ import { AtButtonIcon, AtLogo } from '@/components/atoms'
 import { OrNavigationMenu } from '@/components/organisms'
 import { menuOptions } from '@/utils/commons'
 import { Theme } from '@/types/index'
+import { useRouter } from 'next/router'
 
 interface OrHeaderProps {
   theme?: Theme
@@ -14,6 +15,8 @@ interface OrHeaderProps {
 export const OrHeader = ({ theme = 'dark' }: OrHeaderProps) => {
   // check user session
   const user = false
+
+  const { pathname } = useRouter()
 
   const [showMobileMenu, setShowMobileMenu] = useState<boolean>(false)
 
@@ -54,20 +57,24 @@ export const OrHeader = ({ theme = 'dark' }: OrHeaderProps) => {
               <div>Name and photo</div>
             ) : (
               <div className="flex items-center space-x-4">
-                <Link
-                  href={'/login'}
-                  aria-current="page"
-                  className={`flex w-full items-center text-sm uppercase tracking-wide hover:text-pink-500 hover:underline hover:underline-offset-2`}
-                >
-                  <span className="block w-full">Login</span>
-                </Link>
-                <Link
-                  href={'/signup'}
-                  aria-current="page"
-                  className={`flex w-full items-center text-sm uppercase tracking-wide hover:text-pink-500 hover:underline hover:underline-offset-2`}
-                >
-                  <span className="block w-full">Signup</span>
-                </Link>
+                {pathname !== '/login' && (
+                  <Link
+                    href={'/login'}
+                    aria-current="page"
+                    className={`flex w-full items-center text-sm uppercase tracking-wide hover:text-pink-500 hover:underline hover:underline-offset-2`}
+                  >
+                    <span className="block w-full">Login</span>
+                  </Link>
+                )}
+                {pathname !== '/signup' && (
+                  <Link
+                    href={'/signup'}
+                    aria-current="page"
+                    className={`flex w-full items-center text-sm uppercase tracking-wide hover:text-pink-500 hover:underline hover:underline-offset-2`}
+                  >
+                    <span className="block w-full">Signup</span>
+                  </Link>
+                )}
               </div>
             )}
           </div>
