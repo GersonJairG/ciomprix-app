@@ -1,3 +1,6 @@
+export type Theme = 'dark' | 'light'
+
+export type Status = 'success' | 'error' | 'warning' | 'info'
 export interface PersonData {
   id: number | string
   img: string
@@ -11,10 +14,6 @@ export interface MenuOption {
   name: string
   path: string
 }
-
-export type Theme = 'dark' | 'light'
-
-export type Status = 'success' | 'error' | 'warning' | 'info'
 
 export interface SignUpFields {
   name: string
