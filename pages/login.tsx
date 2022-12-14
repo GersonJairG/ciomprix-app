@@ -6,15 +6,19 @@ import { Layout } from '@/components/templates'
 import { MlLoginForm } from '@/components/molecules'
 import { AtAlert } from '@/components/atoms'
 import type { LoginFields, Status } from '@/types/index'
+import useAuth from 'hooks/useAuth'
 
 export default function Login() {
+
+  const { logIn } = useAuth()
+
   const [showAlert, setShowAlert] = useState<boolean>(false)
   const [msgAlert, setMsgAlert] = useState<string>('')
   const [typeAlert, setTypeAlert] = useState<Status>('success')
 
-  function login(data: LoginFields) {
-    console.log('data login: ', data)
-  }
+  // function login(data: LoginFields) {
+  //   console.log('data login: ', data)
+  // }
 
   function forgotPassword() {
     console.log('This functionality will be available later.')
@@ -51,7 +55,7 @@ export default function Login() {
             </div>
           </div>
           <div className="w-full sm:max-w-sm mx-5">
-            <MlLoginForm login={login} />
+            <MlLoginForm login={logIn} />
           </div>
         </div>
       </main>

@@ -7,14 +7,15 @@ import { OrNavigationMenu } from '@/components/organisms'
 import { menuOptions } from '@/utils/commons'
 import type { Theme } from '@/types/index'
 import { useRouter } from 'next/router'
+import useAuth from 'hooks/useAuth'
 
 interface OrHeaderProps {
   theme?: Theme
 }
 
 export const OrHeader = ({ theme = 'dark' }: OrHeaderProps) => {
-  // check user session
-  const user = false
+
+  const { user } = useAuth()
 
   const { pathname } = useRouter()
 
@@ -54,7 +55,7 @@ export const OrHeader = ({ theme = 'dark' }: OrHeaderProps) => {
           </ul>
           <div className="flex items-center uppercase px-4">
             {user ? (
-              <div>Name and photo</div>
+              <div>{user.name}</div>
             ) : (
               <div className="flex items-center space-x-4">
                 {pathname !== '/login' && (

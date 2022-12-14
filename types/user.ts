@@ -12,5 +12,7 @@ export interface User {
   password: string
 }
 
+export type UserPublic = Pick<User, 'name' | 'email' | 'phone'>
+
 export type NewUser = Omit<User, 'id' | 'created_at'>
 export type ValidUser = Pick<User, 'email' | 'password'>
