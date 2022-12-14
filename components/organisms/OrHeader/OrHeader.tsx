@@ -5,15 +5,24 @@ import { useState } from 'react'
 import { AtButtonIcon, AtLogo } from '@/components/atoms'
 import { OrNavigationMenu } from '@/components/organisms'
 import { menuOptions } from '@/utils/commons'
+import { Theme } from '@/types/index'
 
-export const OrHeader = () => {
+interface OrHeaderProps {
+  theme?: Theme
+}
+
+export const OrHeader = ({ theme = 'dark' }: OrHeaderProps) => {
   // check user session
   const user = false
 
   const [showMobileMenu, setShowMobileMenu] = useState<boolean>(false)
 
   return (
-    <header className="bg-transparent absolute w-full text-white flex justify-between px-8 lg:px-16 py-5 align-middle">
+    <header
+      className={`bg-transparent absolute w-full flex justify-between px-8 lg:px-16 py-5 align-middle ${
+        theme === 'dark' ? 'text-white' : 'text-neutral-600'
+      }`}
+    >
       <AtLogo />
       <div className="flex justify-center items-center">
         <div className="flex md:hidden">

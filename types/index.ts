@@ -11,3 +11,7 @@ export interface MenuOption {
   name: string
   path: string
 }
+
+export type Theme = 'dark' | 'light'
+
+export type Status = 'success' | 'error' | 'warning' | 'info'
