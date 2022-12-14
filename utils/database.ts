@@ -1,10 +1,10 @@
 import { Client, ClientBase, ClientConfig } from 'pg'
 
 const credentials: ClientConfig = {
-  user: `${process.env.PGUSER}`,
-  host: `${process.env.PGHOST}`,
-  database: `${process.env.PGDATABASE}`,
-  password: `${process.env.PGPASSWORD}`,
+  user: process.env.PGUSER || '',
+  host: process.env.PGHOST || '',
+  database: process.env.PGDATABASE || '',
+  password: process.env.PGPASSWORD || '',
   port: Number(process.env.PGPORT),
 }
 

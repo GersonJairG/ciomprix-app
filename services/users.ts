@@ -1,4 +1,4 @@
-import { NewUser, UserPublic, ValidUser } from '@/types/user'
+import { NewUser, ValidUser } from '@/types/user'
 
 export async function getUsers() {
   try {
@@ -11,6 +11,7 @@ export async function getUsers() {
     return response.json()
   } catch (error) {
     console.log('Error in services:: getUsers :: ', error)
+    return { message: 'Unexpected error.' }
   }
 }
 
@@ -23,29 +24,41 @@ export async function createUser(newUser: NewUser) {
       },
       method: 'POST',
     })
-    if (!response) return
-    return response.json()
+
+    return await response.json()
   } catch (error) {
     console.log('Error in services:: createUser :: ', error)
+    return { message: 'Unexpected error.' }
   }
 }
 
-export async function validateUser(validUser: ValidUser) {
+export const validateUser = async (validUser: ValidUser) => {
   try {
-    const response = await fetch('/api/users/valid', {
+    const response = await fetch('/api/users/sign_in', {
       body: JSON.stringify(validUser),
       headers: {
         'Content-Type': 'application/json',
       },
       method: 'POST',
     })
-    const { data, message } = await response.json()
-    if (!data) {
-      console.log('Manejar errores :: ', message)
-      return
-    }
-    return data
+    return await response.json()
   } catch (error) {
     console.log('Error in services:: validateUser :: ', error)
+    return { message: 'Unexpected error.' }
+  }
+}
+
+export const checkEmail = async (email: string) => {
+  try {
+    const response = await fetch('/api/users/check_email', {
+      body: JSON.stringify({ email }),
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    })
+    return await response.json()
+  } catch (error) {
+    console.log('Error in services:: checkEmail :: ', error)
+    return { message: 'Unexpected error.' }
   }
 }

@@ -1,52 +1,32 @@
-import { useEffect, useState } from 'react'
 import Image from 'next/image'
 
 import SignupSvg from '/public/images/signup.svg'
 import { Layout } from '@/components/templates'
 import { MlSignupForm } from '@/components/molecules'
-import { AtAlert } from '@/components/atoms'
-import type { SignUpFields, Status } from '@/types/index'
+import type { SignUpFields } from '@/types/index'
 import { useRouter } from 'next/router'
-import useAuth from 'hooks/useAuth'
 import { createUser } from '@/services/users'
+import useAlert from 'hooks/useAlert'
 
 export default function SignUp() {
-  
   const { push: redirect } = useRouter()
-
-  const [showAlert, setShowAlert] = useState<boolean>(false)
-  const [msgAlert, setMsgAlert] = useState<string>('')
-  const [typeAlert, setTypeAlert] = useState<Status>('success')
+  const { showErrorAlert, showSuccessAlert } = useAlert()
 
   async function signUp(data: SignUpFields) {
     const response = await createUser(data)
-    if (!response) {
-      console.log('An error has occurred')
+    if (!response?.data) {
+      response.message && showErrorAlert(response.message)
       return
     }
+    showSuccessAlert('Successful registration')
     redirect('/login')
   }
-
-  useEffect(() => {
-    if (!showAlert) {
-      setMsgAlert('')
-      setTypeAlert('success')
-    }
-  }, [showAlert])
 
   return (
     <Layout theme="light" withoutFooter>
       <main className="h-screen pt-20 pb-10 mx-auto px-10 flex flex-col md:px-28 bg-gray-100">
-        <AtAlert
-          status={typeAlert}
-          show={showAlert}
-          onClose={() => setShowAlert(false)}
-          msg={msgAlert}
-        />
         <div
-          className={`flex justify-evenly w-full items-center flex-col lg:flex-row-reverse ${
-            showAlert ? 'basis-11/12' : 'basis-full'
-          }`}
+          className={`flex justify-evenly w-full items-center flex-col lg:flex-row-reverse basis-full`}
         >
           <div className="flex items-center justify-center">
             <div className="relative w-80 h-80 lg:w-96 lg:h-96">

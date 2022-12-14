@@ -9,7 +9,7 @@ const parseName = (commentFromRequest: any): string => {
   return commentFromRequest
 }
 
-const parseEmail = (commentFromRequest: any): string => {
+export const parseEmail = (commentFromRequest: any): string => {
   if (!isString(commentFromRequest)) {
     throw new Error('Incorrect or missing email.')
   }

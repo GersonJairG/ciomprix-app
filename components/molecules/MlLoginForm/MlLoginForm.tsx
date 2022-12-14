@@ -22,9 +22,7 @@ export const MlLoginForm = ({ login }: MlLoginFormProps) => {
   } = useForm<LoginFields>(formOptions)
 
   const onSubmit: SubmitHandler<LoginFields> = (data) => {
-    console.log(data)
     login(data)
-    reset()
   }
 
   return (

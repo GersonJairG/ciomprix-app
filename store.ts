@@ -4,6 +4,7 @@ import { persistReducer } from 'redux-persist'
 import { combineReducers } from '@reduxjs/toolkit'
 import thunk from 'redux-thunk'
 
+import alertReducer from '@/slices/alertSlice'
 import authReducer from '@/slices/authSlice'
 
 const persistConfig = {
@@ -15,6 +16,7 @@ const persistConfig = {
 
 const rootReducer = combineReducers({
   auth: authReducer,
+  alert: alertReducer
 })
 
 const persistReducerRoot = persistReducer(persistConfig, rootReducer)

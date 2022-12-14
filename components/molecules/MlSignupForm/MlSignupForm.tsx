@@ -21,9 +21,7 @@ export const MlSignupForm = ({ signUp }: MlSignupFormProps) => {
   } = useForm<SignUpFields>(formOptions)
 
   const onSubmit: SubmitHandler<SignUpFields> = (data) => {
-    console.log(data)
     signUp(data)
-    reset()
   }
 
   return (

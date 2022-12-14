@@ -3,6 +3,7 @@ import type { NextApiRequest, NextApiResponse } from 'next'
 import { conn } from '@/utils/database'
 import { toNewUser } from '@/utils/checks'
 import { ResponseType } from '@/types/user'
+import { encrypt } from '@/utils/bcryptjs'
 
 export default async function handler(
   req: NextApiRequest,
@@ -10,30 +11,31 @@ export default async function handler(
 ) {
   const { method, body } = req
 
+  // ListUsers
   switch (method) {
     case 'GET':
       try {
-        const query = 'SELECT * FROM users;'
+        const query = 'SELECT id, email, phone, name FROM users;'
         const response = await conn?.query(query)
 
         return res.status(200).json({
           message: `Success.`,
           data: response?.rows,
         })
-
-        return
       } catch (error: any) {
         return res.status(400).json({ message: error.message })
       }
 
+    // CreateUser
     case 'POST':
       try {
         const newUser = toNewUser(body)
         const { name, phone, email, password } = newUser
+        const passwordHash = await encrypt(password)
 
         const query =
           'INSERT INTO users (name, phone, email, password) VALUES ($1, $2, $3, $4) RETURNING *;'
-        const values = [name, phone, email, password]
+        const values = [name, phone, email, passwordHash]
 
         const response = await conn?.query(query, values)
 
