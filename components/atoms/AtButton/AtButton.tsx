@@ -58,8 +58,10 @@ export const AtButton: FC<ButtonProps> = ({
           : ''
       } ${className} `}
       onClick={(e) => {
-        onClick?.()
-        e.preventDefault()
+        if (onClick) {
+          onClick()
+          e.preventDefault()
+        }
       }}
       type={type}
       {...rest}

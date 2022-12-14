@@ -5,7 +5,7 @@ import { useState } from 'react'
 import { AtButtonIcon, AtLogo } from '@/components/atoms'
 import { OrNavigationMenu } from '@/components/organisms'
 import { menuOptions } from '@/utils/commons'
-import { Theme } from '@/types/index'
+import type { Theme } from '@/types/index'
 import { useRouter } from 'next/router'
 
 interface OrHeaderProps {

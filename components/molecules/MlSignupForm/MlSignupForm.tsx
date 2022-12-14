@@ -1,57 +1,71 @@
 import Link from 'next/link'
+import { SubmitHandler, useForm } from 'react-hook-form'
+import { yupResolver } from '@hookform/resolvers/yup'
 
 import { AtButton, AtInput } from '@/components/atoms'
-import { useState } from 'react'
+import { SignUpFormSchema } from '@/schemas/index'
+import type { SignUpFields } from '@/types/index'
 
 interface MlSignupFormProps {
-  SignupAction: (
-    name: string,
-    phone: string,
-    email: string,
-    password: string
-  ) => void
+  signUp: (data: SignUpFields) => void
 }
 
-export const MlSignupForm = ({ SignupAction }: MlSignupFormProps) => {
-  const [name, setName] = useState<string>('')
-  const [phone, setPhone] = useState<string>('')
-  const [email, setEmail] = useState<string>('')
-  const [password, setPassword] = useState<string>('')
+export const MlSignupForm = ({ signUp }: MlSignupFormProps) => {
+  const formOptions = { resolver: yupResolver(SignUpFormSchema) }
+
+  const {
+    register,
+    handleSubmit,
+    reset,
+    formState: { errors },
+  } = useForm<SignUpFields>(formOptions)
+
+  const onSubmit: SubmitHandler<SignUpFields> = (data) => {
+    console.log(data)
+    signUp(data)
+    reset()
+  }
 
   return (
-    <form>
+    <form onSubmit={handleSubmit(onSubmit)}>
       <AtInput
         className="mb-4"
         placeholder="Name"
-        value={name}
-        onChange={(e) => setName(e.target.value)}
+        {...register('name')}
+        error={errors.name?.message}
       />
+
       <AtInput
         className="mb-4"
         placeholder="Phone"
-        value={phone}
-        onChange={(e) => setPhone(e.target.value)}
+        {...register('phoneNumber')}
+        error={errors.phoneNumber?.message}
       />
       <AtInput
         className="mb-4"
         placeholder="Email address"
-        value={email}
-        onChange={(e) => setEmail(e.target.value)}
+        {...register('email')}
+        error={errors.email?.message}
       />
       <AtInput
-        type={'password'}
+        type="password"
         className="mb-4"
         placeholder="Password"
-        value={password}
-        onChange={(e) => setPassword(e.target.value)}
+        {...register('password')}
+        error={errors.password?.message}
+      />
+      <AtInput
+        type="password"
+        className="mb-4"
+        placeholder="Confirm Password"
+        {...register('confirmPassword')}
+        error={errors.confirmPassword?.message}
       />
 
       <div className="text-center lg:text-left">
         <AtButton
+          type="submit"
           className="w-full bg-pink-400 text-white hover:bg-pink-500 uppercase rounded shadow-md"
-          onClick={() => {
-            SignupAction(name, phone, email, password)
-          }}
         >
           Sign Up
         </AtButton>

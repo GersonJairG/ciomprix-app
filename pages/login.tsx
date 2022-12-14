@@ -1,45 +1,45 @@
-import loginSvg from '../public/images/login.svg'
+import { useEffect, useState } from 'react'
 import Image from 'next/image'
+
+import loginSvg from '/public/images/login.svg'
 import { Layout } from '@/components/templates'
 import { MlLoginForm } from '@/components/molecules'
 import { AtAlert } from '@/components/atoms'
-import { useEffect, useState } from 'react'
-import { Status } from '../types'
+import type { LoginFields, Status } from '@/types/index'
 
 export default function Login() {
   const [showAlert, setShowAlert] = useState<boolean>(false)
   const [msgAlert, setMsgAlert] = useState<string>('')
   const [typeAlert, setTypeAlert] = useState<Status>('success')
 
-  function login(email: string, password: string) {
-    console.log('data: ', { email, password })
+  function login(data: LoginFields) {
+    console.log('data login: ', data)
   }
 
   function forgotPassword() {
     console.log('This functionality will be available later.')
 
     setMsgAlert('This functionality will be available later.')
-    setTypeAlert('info')
+    setTypeAlert('warning')
     setShowAlert(true)
   }
 
   useEffect(() => {
     if (!showAlert) {
-      setMsgAlert('') 
+      setMsgAlert('')
       setTypeAlert('success')
     }
   }, [showAlert])
 
   return (
     <Layout theme="light" withoutFooter>
-      <main className="h-screen pt-20 pb-10 mx-auto px-10 flex flex-col md:px-28">
+      <main className="h-screen pt-20 pb-10 mx-auto px-10 flex flex-col md:px-28 bg-gray-100">
         <AtAlert
           status={typeAlert}
           show={showAlert}
+          msg={msgAlert}
           onClose={() => setShowAlert(false)}
-        >
-          {msgAlert}
-        </AtAlert>
+        />
         <div
           className={`flex justify-evenly w-full items-center flex-col lg:flex-row ${
             showAlert ? 'basis-11/12' : 'basis-full'
@@ -51,7 +51,7 @@ export default function Login() {
             </div>
           </div>
           <div className="w-full sm:max-w-sm mx-5">
-            <MlLoginForm loginAction={login} forgotPassword={forgotPassword} />
+            <MlLoginForm login={login} />
           </div>
         </div>
       </main>

@@ -20,6 +20,7 @@
       "@/utils/*": ["utils/*"],
       "@/types/*": ["types/*"],
       "@/styles/*": ["styles/*"],
+      "@/schemas/*": ["schemas/*"],
     }
   },
   "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx"],

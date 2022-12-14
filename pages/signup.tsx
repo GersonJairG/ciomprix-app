@@ -1,23 +1,19 @@
-import SignupSvg from '../public/images/signup.svg'
+import { useEffect, useState } from 'react'
 import Image from 'next/image'
+
+import SignupSvg from '/public/images/signup.svg'
 import { Layout } from '@/components/templates'
 import { MlSignupForm } from '@/components/molecules'
 import { AtAlert } from '@/components/atoms'
-import { useEffect, useState } from 'react'
-import { Status } from '../types'
+import type { SignUpFields, Status } from '@/types/index'
 
 export default function SignUp() {
   const [showAlert, setShowAlert] = useState<boolean>(false)
   const [msgAlert, setMsgAlert] = useState<string>('')
   const [typeAlert, setTypeAlert] = useState<Status>('success')
 
-  function signup(
-    name: string,
-    phone: string,
-    email: string,
-    password: string
-  ) {
-    console.log('data: ', { name, phone, email, password })
+  function signUp(data: SignUpFields) {
+    console.log('data sign up: ', data)
   }
 
   useEffect(() => {
@@ -29,14 +25,13 @@ export default function SignUp() {
 
   return (
     <Layout theme="light" withoutFooter>
-      <main className="h-screen pt-20 pb-10 mx-auto px-10 flex flex-col md:px-28">
+      <main className="h-screen pt-20 pb-10 mx-auto px-10 flex flex-col md:px-28 bg-gray-100">
         <AtAlert
           status={typeAlert}
           show={showAlert}
           onClose={() => setShowAlert(false)}
-        >
-          {msgAlert}
-        </AtAlert>
+          msg={msgAlert}
+        />
         <div
           className={`flex justify-evenly w-full items-center flex-col lg:flex-row-reverse ${
             showAlert ? 'basis-11/12' : 'basis-full'
@@ -48,7 +43,7 @@ export default function SignUp() {
             </div>
           </div>
           <div className="w-full sm:max-w-sm mx-5">
-            <MlSignupForm SignupAction={signup} />
+            <MlSignupForm signUp={signUp} />
           </div>
         </div>
       </main>

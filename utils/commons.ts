@@ -1,4 +1,4 @@
-import { MenuOption } from 'types'
+import type { MenuOption } from 'types'
 
 export const menuOptions: MenuOption[] = [
   { name: 'Features', path: '/features' },

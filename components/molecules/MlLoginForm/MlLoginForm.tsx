@@ -1,50 +1,59 @@
-import Link from 'next/link'
-
-import { AtButton, AtCheckbox, AtInput } from '@/components/atoms'
 import { useState } from 'react'
+import Link from 'next/link'
+import { SubmitHandler, useForm } from 'react-hook-form'
+import { yupResolver } from '@hookform/resolvers/yup'
+
+import { AtButton, AtInput } from '@/components/atoms'
+import type { LoginFields } from '@/types/index'
+import { LoginFormSchema } from '@/schemas/LoginFormSchema'
 
 interface MlLoginFormProps {
-  loginAction: (email: string, password: string) => void
-  forgotPassword: () => void
+  login: (data: LoginFields) => void
 }
 
-export const MlLoginForm = ({ loginAction, forgotPassword }: MlLoginFormProps) => {
-  const [email, setEmail] = useState<string>('')
-  const [password, setPassword] = useState<string>('')
+export const MlLoginForm = ({ login }: MlLoginFormProps) => {
+  const formOptions = { resolver: yupResolver(LoginFormSchema) }
+
+  const {
+    register,
+    handleSubmit,
+    reset,
+    formState: { errors },
+  } = useForm<LoginFields>(formOptions)
+
+  const onSubmit: SubmitHandler<LoginFields> = (data) => {
+    console.log(data)
+    login(data)
+    reset()
+  }
 
   return (
-    <form>
+    <form onSubmit={handleSubmit(onSubmit)}>
       <AtInput
         className="mb-4"
         placeholder="Email address"
-        value={email}
-        onChange={(e) => setEmail(e.target.value)}
+        {...register('email')}
+        error={errors.email?.message}
       />
       <AtInput
-        type={'password'}
+        type="password"
         className="mb-4"
         placeholder="Password"
-        value={password}
-        onChange={(e) => setPassword(e.target.value)}
+        {...register('password')}
+        error={errors.password?.message}
       />
 
-      <div className="flex justify-between items-center mb-6 flex-col sm:flex-row space-y-3 sm:space-y-0">
-        <AtCheckbox textLabel="Remember me" />
-        <Link
-          href={''}
-          className="text-neutral-600 hover:text-pink-400 flex text-sm w-full justify-center"
-          onClick={forgotPassword}
-        >
-          <span>Forgot password?</span>
-        </Link>
-      </div>
+      <Link
+        href={'/recover-password'}
+        className="text-neutral-600 hover:text-pink-400 flex text-sm w-full justify-center mb-6 md:justify-end"
+      >
+        <span>Forgot password?</span>
+      </Link>
 
       <div className="text-center lg:text-left">
         <AtButton
+          type="submit"
           className="w-full bg-pink-400 text-white hover:bg-pink-500 uppercase rounded shadow-md"
-          onClick={() => {
-            loginAction(email, password)
-          }}
         >
           Login
         </AtButton>

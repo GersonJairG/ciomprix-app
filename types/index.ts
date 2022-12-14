@@ -15,3 +15,16 @@ export interface MenuOption {
 export type Theme = 'dark' | 'light'
 
 export type Status = 'success' | 'error' | 'warning' | 'info'
+
+export interface SignUpFields {
+  name: string
+  phoneNumber: string
+  email: string
+  password: string
+  confirmPassword: string
+}
+
+export interface LoginFields {
+  email: string
+  password: string
+}

@@ -4,7 +4,7 @@ import { AtButton } from '@/components/atoms'
 import { MlCard } from '@/components/molecules'
 import { OrHero } from '@/components/organisms'
 import { Layout } from '@/components/templates'
-import { PersonData } from '@/types/index'
+import type { PersonData } from '@/types/index'
 
 const peopleData: PersonData[] = [
   {
