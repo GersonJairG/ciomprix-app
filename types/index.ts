@@ -1,3 +1,6 @@
+export type Theme = 'dark' | 'light'
+
+export type Status = 'success' | 'error' | 'warning' | 'info'
 export interface PersonData {
   id: number | string
   img: string

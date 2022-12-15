@@ -1,7 +1,7 @@
-import { MenuOption } from 'types'
+import type { MenuOption } from 'types'
 
 export const menuOptions: MenuOption[] = [
-  { name: 'Features', path: '/features' },
+  { name: 'Profile', path: '/profile' },
   { name: 'Pricing', path: '/pricing', },
   { name: 'About', path: '/about', },
   { name: 'Contact', path: '/contact', },

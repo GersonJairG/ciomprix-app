@@ -57,7 +57,12 @@ export const AtButton: FC<ButtonProps> = ({
           ? `bg-pink-500 text-white ${!disabled ? 'hover:bg-pink-600' : ''}`
           : ''
       } ${className} `}
-      onClick={() => onClick?.()}
+      onClick={(e) => {
+        if (onClick) {
+          onClick()
+          e.preventDefault()
+        }
+      }}
       type={type}
       {...rest}
     >

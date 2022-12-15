@@ -1,34 +1,105 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Project Title
 
-## Getting Started
+CIOMPRIX Challenge App
 
-First, run the development server:
+## Table of contents
 
-```bash
-npm run dev
-# or
-yarn dev
-```
+- [Overview](#overview)
+  - [Description](#description)
+  - [Demo Links](#demo-links)
+  - [Screenshots](#screenshots)
+  - [Tasks breakdown](#tasks-breakdown)
+- [Tools and structure](#tools-and-structure)
+  - [Technologies Used](#technologies-used)
+  - [Setup](#setup)
+  - [Project structure](#project-structure)
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Overview
 
-You can start editing the page by modifying `pages/index.tsx`. The page auto-updates as you edit the file.
+### Description
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.ts`.
+A small landing page example focused on the internal data of a company. It is important to mention that the site has registration and user information update forms, along with login and session management.
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
+This landing page is part of a technical test for [Ciomprix company](https://www.ciomprix.com/).
 
-## Learn More
+### Demo Links
 
-To learn more about Next.js, take a look at the following resources:
+Deployment of the web app on Vercel:
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+[Developer branch](https://ciomprix-app-developer.vercel.app/) (All features)
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+[Main branch](https://ciomprix-app.vercel.app/) (Initials features)
 
-## Deploy on Vercel
+### Screenshots
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+![Web Application in Desktop](public/desktop-screenshot.png)
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+![Web Application in Mobile](public/mobile-screenshot.png)
+
+### Tasks breakdown
+
+To check the tasks breakdown, please refer to the GitHub Project [Ciomprix App](https://github.com/GersonJairG/ciomprix-app)
+
+## Tools and structure
+
+### Technologies Used
+
+#### Dev stack
+
+- TypeScript
+- NextJS
+- RTK (Redux Toolkit)
+- TailwindCSS
+- HeadlessUI
+
+#### Dependencies
+
+- react-hook-form (Form creation)
+- yup (Form validations)
+- react-icons (Icons)
+- redux-persist (State persistence)
+
+- pg (Connection to db postgres)
+- bcryptjs (Password encryption)
+
+### Project structure
+
+#### Back and front connection
+
+Taking advantage of the ability of NextJS to be able to implement APIs within the same project, I decided to implement the following endpoints following the REST standards:
+
+- GET [/api/users](https://ciomprix-app-developer.vercel.app/api/users) (List users)
+
+- POST [/api/users](https://ciomprix-app-developer.vercel.app/api/users) (Create user)
+
+- PUT [/api/users](https://ciomprix-app-developer.vercel.app/api/users) (Update user)
+
+- POST [/api/users/sign_in](https://ciomprix-app-developer.vercel.app/api/users/sign_in) (Log in)
+
+- GET [/api/users/check_email](https://ciomprix-app-developer.vercel.app/api/users/check_email) (Check email)
+
+To request the information from these endpoints I used the Fetch API and this allowed me to obtain the necessary information to render in the respective views.
+
+#### Components
+
+- **Atoms**: The atoms include AtAlert, AtButton, AtCheckbox, AtInput, AtLoader and AtLogo components.
+- **Molecules**: The molecule include MlCard, MlModalScreen, MlSocialList and Forms components.
+- **Organisms**: The organisms include OrFooter, OrHeader, OrHero and OrNavigationMenu components.
+- **Templates**: The templates include Layout component.
+
+#### Pages
+
+The Pages folder has the main views: Home, Login, Signup, Profile, and 404.
+
+#### Deployment tool
+
+- Vercel
+
+### Setup
+
+- Download or clone the repository
+- You need to create an .env file with the following environment variables for the database connection: PGUSER, PGHOST, PGDATABASE, PGPASSWORD y PGPORT
+
+- Run `npm install`
+- Run `npm run dev`
+- Open `http://localhost:3000` to view it in your browser.

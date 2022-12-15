@@ -4,22 +4,22 @@ import { ImFlickr } from 'react-icons/im'
 
 const socialList = [
   {
-    href: '#',
+    href: '/',
     Icon: RiFacebookFill,
     name: 'Facebook',
   },
   {
-    href: '#',
+    href: '/',
     Icon: ImFlickr,
     name: 'Flickr',
   },
   {
-    href: '#',
+    href: '/',
     Icon: RiTwitterFill,
     name: 'Twitter',
   },
   {
-    href: '#',
+    href: '/',
     Icon: RiSkypeFill,
     name: 'Skype',
   },

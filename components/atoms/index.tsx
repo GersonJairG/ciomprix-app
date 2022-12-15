@@ -1,3 +1,7 @@
 export * from './AtButton/AtButton'
 export * from './AtButton/AtButtonIcon'
+export * from './AtInput/AtInput'
 export * from './AtLogo/AtLogo'
+export * from './AtCheckbox/AtCheckbox'
+export * from './AtAlert/AtAlert'
+export * from './AtLoader/AtLoader'
