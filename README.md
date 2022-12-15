@@ -26,9 +26,10 @@ This landing page is part of a technical test for [Ciomprix company](https://www
 
 Deployment of the web app on Vercel:
 
-[Developer branch](https://ciomprix-app-developer.vercel.app/) (All features)
+[Main branch](https://ciomprix-app.vercel.app/)
 
-[Main branch](https://ciomprix-app.vercel.app/) (Initials features)
+[Developer branch](https://ciomprix-app-developer.vercel.app/)
+
 
 ### Screenshots
 
