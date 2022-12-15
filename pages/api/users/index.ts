@@ -1,9 +1,9 @@
 import type { NextApiRequest, NextApiResponse } from 'next'
 
-import { conn } from '@/utils/database'
-import { toNewUser, toUpdateUser } from '@/utils/checks'
-import { ResponseType } from '@/types/user'
-import { encrypt } from '@/utils/bcryptjs'
+import { encrypt } from 'utils/bcryptjs'
+import { toNewUser, toUpdateUser } from 'utils/checks'
+import { conn } from 'utils/database'
+import { ResponseType } from 'types/user'
 
 export default async function handler(
   req: NextApiRequest,

@@ -1,7 +1,8 @@
 import { createSlice } from '@reduxjs/toolkit'
 import type { PayloadAction } from '@reduxjs/toolkit'
+
+import { Status } from 'types'
 import { RootState } from 'store'
-import { Status } from '@/types/index'
 
 export interface AlertState {
   msgAlert: string

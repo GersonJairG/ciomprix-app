@@ -1,14 +1,14 @@
 import Link from 'next/link'
 import { RiMenuFill } from 'react-icons/ri'
 import { useState } from 'react'
-
-import { AtButtonIcon, AtLogo } from '@/components/atoms'
-import { OrNavigationMenu } from '@/components/organisms'
-import { menuOptions } from '@/utils/commons'
-import type { Theme } from '@/types/index'
 import { useRouter } from 'next/router'
+
+import { AtButtonIcon, AtLogo } from 'components/atoms'
+import { OrNavigationMenu } from 'components/organisms'
+import { MlUserInfo } from 'components/molecules'
 import useAuth from 'hooks/useAuth'
-import { MlUserInfo } from '@/components/molecules'
+import type { Theme } from 'types/index'
+import { menuOptions } from 'utils/commons'
 
 interface OrHeaderProps {
   theme?: Theme

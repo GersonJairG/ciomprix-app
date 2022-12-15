@@ -1,10 +1,10 @@
 import { ReactNode } from 'react'
 
-import { OrFooter, OrHeader } from '@/components/organisms'
-import type { Theme } from '@/types/index'
+import { AtAlert, AtLoader } from 'components/atoms'
+import { OrFooter, OrHeader } from 'components/organisms'
 import useAlert from 'hooks/useAlert'
-import { AtAlert, AtLoader } from '@/components/atoms'
 import useAuth from 'hooks/useAuth'
+import type { Theme } from 'types'
 
 interface LayoutProps {
   theme?: Theme

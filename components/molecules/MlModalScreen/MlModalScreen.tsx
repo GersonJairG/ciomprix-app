@@ -1,6 +1,6 @@
-import { Dialog, Transition } from '@headlessui/react'
 import { Fragment, ReactNode } from 'react'
 import { RiCloseFill } from 'react-icons/ri'
+import { Dialog, Transition } from '@headlessui/react'
 
 interface MlModalScreenProps {
   show: boolean

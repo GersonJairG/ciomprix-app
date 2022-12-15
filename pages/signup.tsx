@@ -1,13 +1,14 @@
 import Image from 'next/image'
-
-import SignupSvg from '/public/images/signup.svg'
-import { Layout } from '@/components/templates'
-import { MlSignupForm } from '@/components/molecules'
-import type { SignUpFields } from '@/types/index'
 import { useRouter } from 'next/router'
-import { createUser } from '@/services/users'
+
+import { MlSignupForm } from 'components/molecules'
+import { Layout } from 'components/templates'
 import useAlert from 'hooks/useAlert'
 import useAuth from 'hooks/useAuth'
+import type { SignUpFields } from 'types'
+import { createUser } from 'services/users'
+
+import SignupSvg from '/public/images/signup.svg'
 
 export default function SignUp() {
   const { push: redirect } = useRouter()
@@ -35,7 +36,7 @@ export default function SignUp() {
         >
           <div className="flex items-center justify-center">
             <div className="relative w-80 h-80 lg:w-96 lg:h-96">
-              <Image alt="login-img" src={SignupSvg} fill />
+              <Image sizes='default' alt="signup-img" src={SignupSvg} fill />
             </div>
           </div>
           <div className="w-full sm:max-w-sm mx-5">

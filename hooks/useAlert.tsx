@@ -1,3 +1,5 @@
+import { useDispatch, useSelector } from 'react-redux'
+
 import {
   selectShowAlert,
   renderErrorAlert,
@@ -7,8 +9,8 @@ import {
   dismountAlert,
   selectMsgAlert,
   selectTypeAlert,
-} from '@/slices/alertSlice'
-import { useDispatch, useSelector } from 'react-redux'
+} from 'slices/alertSlice'
+
 
 function useAlert() {
   const showAlert = useSelector(selectShowAlert)

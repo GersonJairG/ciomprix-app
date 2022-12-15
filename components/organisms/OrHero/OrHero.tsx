@@ -1,4 +1,4 @@
-import { AtButton } from '@/components/atoms'
+import { AtButton } from 'components/atoms'
 
 interface OrHeroProps {
   callToAction?: () => void

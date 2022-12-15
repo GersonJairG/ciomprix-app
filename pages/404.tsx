@@ -1,9 +1,8 @@
 import Link from 'next/link'
 import Image from 'next/image'
 
+import { Layout } from 'components/templates'
 import notFoundSvg from '/public/images/404.svg'
-import { Layout } from '@/components/templates'
-// import Seo from '@/components/Seo';
 
 export default function NotFoundPage() {
   return (
@@ -14,7 +13,7 @@ export default function NotFoundPage() {
           <section>
             <div className="flex flex-col items-center justify-center text-center">
               <div className="relative w-64 h-64 md:w-80 md:h-80 lg:w-96 lg:h-96">
-                <Image alt="login-img" src={notFoundSvg} fill />
+                <Image sizes='default' alt="404-img" src={notFoundSvg} fill />
               </div>
               <h1 className={`mt-8 font-bold text-4xl md:text-6xl`}>Page not found</h1>
               <Link

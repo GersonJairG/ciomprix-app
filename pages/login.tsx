@@ -1,13 +1,14 @@
 import Image from 'next/image'
 import { useRouter } from 'next/router'
 
-import loginSvg from '/public/images/login.svg'
-import { Layout } from '@/components/templates'
-import { MlLoginForm } from '@/components/molecules'
-import type { LoginFields } from '@/types/index'
+import { MlLoginForm } from 'components/molecules'
+import { Layout } from 'components/templates'
 import useAuth from 'hooks/useAuth'
-import { validateUser } from '@/services/users'
 import useAlert from 'hooks/useAlert'
+import type { LoginFields } from 'types'
+import { validateUser } from 'services/users'
+
+import loginSvg from '/public/images/login.svg'
 
 export default function Login() {
   const { push: redirect } = useRouter()
@@ -44,7 +45,7 @@ export default function Login() {
         >
           <div className="flex items-center justify-center">
             <div className="relative w-80 h-80 lg:w-96 lg:h-96">
-              <Image alt="login-img" src={loginSvg} fill />
+              <Image sizes='default' alt="login-img" src={loginSvg} fill />
             </div>
           </div>
           <div className="w-full sm:max-w-sm mx-5">

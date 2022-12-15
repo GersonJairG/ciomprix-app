@@ -1,4 +1,4 @@
-import { FC, forwardRef, InputHTMLAttributes, LegacyRef } from 'react'
+import { forwardRef, InputHTMLAttributes } from 'react'
 
 export interface AtTextInputProps {
   id?: string

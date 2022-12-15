@@ -1,4 +1,4 @@
-import { NewUser, UpdateUser, ValidUser } from '@/types/user'
+import { NewUser, UpdateUser, ValidUser } from 'types/user'
 
 const isString = (string: string): boolean => typeof string === 'string'
 

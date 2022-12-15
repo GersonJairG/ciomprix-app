@@ -1,11 +1,10 @@
-import { useState } from 'react'
 import Link from 'next/link'
 import { SubmitHandler, useForm } from 'react-hook-form'
 import { yupResolver } from '@hookform/resolvers/yup'
 
-import { AtButton, AtInput } from '@/components/atoms'
-import type { LoginFields } from '@/types/index'
-import { LoginFormSchema } from '@/schemas/index'
+import { AtButton, AtInput } from 'components/atoms'
+import type { LoginFields } from 'types'
+import { LoginFormSchema } from 'schemas'
 
 interface MlLoginFormProps {
   login: (data: LoginFields) => void

@@ -2,9 +2,9 @@ import Link from 'next/link'
 import { SubmitHandler, useForm } from 'react-hook-form'
 import { yupResolver } from '@hookform/resolvers/yup'
 
-import { AtButton, AtInput } from '@/components/atoms'
-import { SignUpFormSchema } from '@/schemas/index'
-import type { SignUpFields } from '@/types/index'
+import { AtButton, AtInput } from 'components/atoms'
+import { SignUpFormSchema } from 'schemas'
+import type { SignUpFields } from 'types'
 
 interface MlSignupFormProps {
   signUp: (data: SignUpFields) => void

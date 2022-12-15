@@ -1,13 +1,12 @@
+import 'styles/globals.css'
+import type { NextComponentType } from 'next'
 import type { AppProps } from 'next/app'
-
-import '@/styles/globals.css'
-
-import { store } from 'store'
+import { ReactNode } from 'react'
 import { Provider } from 'react-redux'
 import { PersistGate } from 'redux-persist/integration/react'
 import { persistStore } from 'redux-persist'
-import { ReactNode } from 'react'
-import type { NextComponentType } from 'next'
+
+import { store } from 'store'
 
 type CustomAppProps = AppProps & {
   Component: NextComponentType & { Auth?: any }

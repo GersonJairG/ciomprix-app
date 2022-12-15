@@ -1,4 +1,4 @@
-import { NewUser, UpdateUser, ValidUser } from '@/types/user'
+import { NewUser, UpdateUser, ValidUser } from 'types/user'
 
 export async function getUsers() {
   try {

@@ -1,10 +1,9 @@
-import Link from 'next/link'
 import { SubmitHandler, useForm } from 'react-hook-form'
 import { yupResolver } from '@hookform/resolvers/yup'
 
-import { AtButton, AtInput } from '@/components/atoms'
-import { UpdateFormSchema } from '@/schemas/index'
-import type { UpdateFields } from '@/types/index'
+import { AtButton, AtInput } from 'components/atoms'
+import { UpdateFormSchema } from 'schemas'
+import type { UpdateFields } from 'types'
 
 interface MlUpdateFormProps {
   update: (data: UpdateFields) => void

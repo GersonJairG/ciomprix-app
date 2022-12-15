@@ -1,11 +1,10 @@
-import { configureStore } from '@reduxjs/toolkit'
+import { configureStore, combineReducers } from '@reduxjs/toolkit'
 import storage from 'redux-persist/lib/storage'
 import { persistReducer } from 'redux-persist'
-import { combineReducers } from '@reduxjs/toolkit'
 import thunk from 'redux-thunk'
 
-import alertReducer from '@/slices/alertSlice'
-import authReducer from '@/slices/authSlice'
+import alertReducer from 'slices/alertSlice'
+import authReducer from 'slices/authSlice'
 
 const persistConfig = {
   timeout: 1000,

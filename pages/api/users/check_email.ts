@@ -1,8 +1,8 @@
 import type { NextApiRequest, NextApiResponse } from 'next'
 
-import { conn } from '@/utils/database'
-import { ResponseType } from '@/types/user'
-import { parseEmail } from '@/utils/checks'
+import { ResponseType } from 'types/user'
+import { parseEmail } from 'utils/checks'
+import { conn } from 'utils/database'
 
 export default async function handler(
   req: NextApiRequest,

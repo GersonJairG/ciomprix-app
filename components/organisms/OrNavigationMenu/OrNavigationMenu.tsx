@@ -1,11 +1,11 @@
 import Link from 'next/link'
-
-import { AtLogo } from '@/components/atoms'
-import { MlModalScreen, MlSocialList, MlUserInfo } from '@/components/molecules'
-import { menuOptions } from '@/utils/commons'
-import useAuth from 'hooks/useAuth'
-
 import { RiLogoutBoxFill } from 'react-icons/ri'
+
+import { AtLogo } from 'components/atoms'
+import { MlModalScreen, MlSocialList, MlUserInfo } from 'components/molecules'
+import useAuth from 'hooks/useAuth'
+import { menuOptions } from 'utils/commons'
+
 
 interface OrNavigationMenuProps {
   show: boolean

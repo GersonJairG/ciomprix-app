@@ -1,7 +1,7 @@
 import { useSelector, useDispatch } from 'react-redux'
-import { setUser, logOut as logout, selectUser, selectLoading, changeLoading } from '@/slices/authSlice'
 
-import { UserPublic } from '@/types/user'
+import { setUser, logOut as logout, selectUser, selectLoading, changeLoading } from 'slices/authSlice'
+import { UserPublic } from 'types/user'
 
 function useAuth() {
   const user = useSelector(selectUser)

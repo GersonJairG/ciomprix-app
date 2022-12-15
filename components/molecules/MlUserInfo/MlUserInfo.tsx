@@ -1,7 +1,7 @@
-import { Menu, Transition } from '@headlessui/react'
 import { Fragment } from 'react'
 import { RiArrowDownSLine, RiLogoutBoxFill } from 'react-icons/ri'
 import Image from 'next/image'
+import { Menu, Transition } from '@headlessui/react'
 
 import profileImg from '/public/images/profile.png'
 
@@ -21,7 +21,7 @@ export const MlUserInfo = ({
   return simple ? (
     <div className="group flex w-full px-2 my-4 py-2 text-sm text-neutral-700 border border-pink-300 rounded-xl">
       <div className="relative rounded-full w-14 h-14 ml-2 mr-4">
-        <Image src={profileImg} alt="profile" fill />
+        <Image sizes='default' src={profileImg} alt="photo-profile-mobile" fill />
       </div>
       <div className="flex flex-col justify-center">
         <span>{name}</span>
@@ -59,7 +59,7 @@ export const MlUserInfo = ({
                       <span className="text-pink-500">{email}</span>
                     </div>
                     <div className="relative rounded-full w-16 h-16">
-                      <Image src={profileImg} alt="profile" fill />
+                      <Image sizes='default' src={profileImg} alt="photo-profile" fill />
                     </div>
                   </div>
                 )}
