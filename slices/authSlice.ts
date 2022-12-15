@@ -5,10 +5,12 @@ import { RootState } from 'store'
 
 export interface AuthState {
   user: UserPublic | null
+  loading: boolean
 }
 
 const initialState: AuthState = {
   user: null,
+  loading: false
 }
 
 export const authSlice = createSlice({
@@ -20,12 +22,16 @@ export const authSlice = createSlice({
     },
     logOut: (state) => {
       state.user = null
+    },
+    changeLoading: (state, action: PayloadAction<boolean>) => {
+      state.loading = action.payload
     }
   },
 })
 
-export const { setUser, logOut } = authSlice.actions
+export const { setUser, logOut, changeLoading } = authSlice.actions
 
 export const selectUser = (state: RootState) => state.auth.user
+export const selectLoading = (state: RootState) => state.auth.loading
 
 export default authSlice.reducer

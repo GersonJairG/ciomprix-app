@@ -34,7 +34,7 @@ export const AtAlert = ({
           leave="transition-opacity duration-150"
           leaveFrom="opacity-100"
           leaveTo="opacity-0"
-          className={`absolute rounded-lg py-4 px-6 text-sm lg:text-base inline-flex items-center justify-between w-3/4 max-w-sm  md:max-w-md lg:max-w-lg top-20 lg:top-24 left-1/2 transform -translate-x-1/2 z-50
+          className={`absolute rounded-lg py-4 px-6 text-sm lg:text-base inline-flex items-center justify-between w-3/4 max-w-sm  md:max-w-md lg:max-w-lg top-20 lg:top-24 left-1/2 transform -translate-x-1/2 z-30
           ${
             status === 'success'
               ? 'bg-green-100 text-green-700'

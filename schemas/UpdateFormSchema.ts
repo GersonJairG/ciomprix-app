@@ -7,6 +7,6 @@ export const UpdateFormSchema = Yup.object().shape({
   name: Yup.string().required('Name is required'),
   phone: Yup.string()
     .required('Phone number is required')
-    .length(10, 'Password must be 10 characters')
+    .length(10, 'Phone number must be 10 characters')
     .matches(phoneRegExp, 'Phone number is not valid'),
 })

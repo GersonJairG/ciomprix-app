@@ -7,17 +7,22 @@ import type { SignUpFields } from '@/types/index'
 import { useRouter } from 'next/router'
 import { createUser } from '@/services/users'
 import useAlert from 'hooks/useAlert'
+import useAuth from 'hooks/useAuth'
 
 export default function SignUp() {
   const { push: redirect } = useRouter()
   const { showErrorAlert, showSuccessAlert } = useAlert()
+  const { setLoading } = useAuth()
 
   async function signUp(data: SignUpFields) {
+    setLoading(true)
     const response = await createUser(data)
     if (!response?.data) {
+      setLoading(false)
       response.message && showErrorAlert(response.message)
       return
     }
+    setLoading(false)
     showSuccessAlert('Successful registration')
     redirect('/login')
   }

@@ -11,7 +11,7 @@ import { UpdateFields } from '../types'
 import profileImg from '/public/images/profile.png'
 
 export default function Profile() {
-  const { user, setInfoUser } = useAuth()
+  const { user, setInfoUser, setLoading } = useAuth()
   const { push: redirect } = useRouter()
   const { showErrorAlert, showSuccessAlert } = useAlert()
 
@@ -21,14 +21,17 @@ export default function Profile() {
   }
 
   async function update(data: UpdateFields) {
+    setLoading(true)
     const response = user && (await updateUser({ ...data, email: user.email }))
 
     if (!response?.data) {
+      setLoading(false)
       response.message && showErrorAlert(response.message)
       return
     }
-    showSuccessAlert('Data updated successfully.')
     setInfoUser(response.data)
+    setLoading(false)
+    showSuccessAlert('Data updated successfully.')
   }
 
   return (

@@ -3,7 +3,8 @@ import { ReactNode } from 'react'
 import { OrFooter, OrHeader } from '@/components/organisms'
 import type { Theme } from '@/types/index'
 import useAlert from 'hooks/useAlert'
-import { AtAlert } from '@/components/atoms'
+import { AtAlert, AtLoader } from '@/components/atoms'
+import useAuth from 'hooks/useAuth'
 
 interface LayoutProps {
   theme?: Theme
@@ -19,10 +20,12 @@ export const Layout = ({
   children,
 }: LayoutProps) => {
   const { msgAlert, showAlert, typeAlert, hiddenAlert } = useAlert()
+  const { loading } = useAuth()
 
   return (
     <>
       {!withoutHeader && <OrHeader theme={theme} />}
+      <AtLoader show={loading} />
       <AtAlert
         show={showAlert}
         onClose={hiddenAlert}
