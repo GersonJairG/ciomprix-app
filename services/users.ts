@@ -1,4 +1,4 @@
-import { NewUser, ValidUser } from '@/types/user'
+import { NewUser, UpdateUser, ValidUser } from '@/types/user'
 
 export async function getUsers() {
   try {
@@ -23,6 +23,23 @@ export async function createUser(newUser: NewUser) {
         'Content-Type': 'application/json',
       },
       method: 'POST',
+    })
+
+    return await response.json()
+  } catch (error) {
+    console.log('Error in services:: createUser :: ', error)
+    return { message: 'Unexpected error.' }
+  }
+}
+
+export async function updateUser(updatedUser: UpdateUser) {
+  try {
+    const response = await fetch('/api/users/', {
+      body: JSON.stringify(updatedUser),
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      method: 'PUT',
     })
 
     return await response.json()

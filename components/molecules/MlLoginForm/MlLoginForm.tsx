@@ -5,7 +5,7 @@ import { yupResolver } from '@hookform/resolvers/yup'
 
 import { AtButton, AtInput } from '@/components/atoms'
 import type { LoginFields } from '@/types/index'
-import { LoginFormSchema } from '@/schemas/LoginFormSchema'
+import { LoginFormSchema } from '@/schemas/index'
 
 interface MlLoginFormProps {
   login: (data: LoginFields) => void

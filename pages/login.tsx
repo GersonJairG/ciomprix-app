@@ -11,8 +11,13 @@ import useAlert from 'hooks/useAlert'
 
 export default function Login() {
   const { push: redirect } = useRouter()
-  const { logIn } = useAuth()
-  const { showErrorAlert, showSuccessAlert } = useAlert()
+  const { setInfoUser, user } = useAuth()
+  const { showErrorAlert } = useAlert()
+
+  if (user) {
+    redirect('/')
+    return
+  }
 
   async function login(data: LoginFields) {
     const response = await validateUser(data)
@@ -21,9 +26,7 @@ export default function Login() {
       response.message && showErrorAlert(response.message)
       return
     }
-    logIn(response.data)
-    showSuccessAlert('Successful Log in')
-    redirect('/')
+    setInfoUser(response.data)
   }
 
   function forgotPassword() {

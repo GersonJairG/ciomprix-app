@@ -7,7 +7,7 @@ function useAuth() {
   const user = useSelector(selectUser)
   const dispatch = useDispatch()
 
-  async function logIn(user: UserPublic) {
+  async function setInfoUser(user: UserPublic) {
     dispatch(setUser(user))
   }
 
@@ -15,7 +15,7 @@ function useAuth() {
     dispatch(logout())
   }
 
-  return { user, logIn, logOut }
+  return { user, setInfoUser, logOut }
 }
 
 export default useAuth

@@ -1,4 +1,4 @@
-import { NewUser, ValidUser } from '@/types/user'
+import { NewUser, UpdateUser, ValidUser } from '@/types/user'
 
 const isString = (string: string): boolean => typeof string === 'string'
 
@@ -47,4 +47,14 @@ export const toValidUser = (object: any): ValidUser => {
     password: parsePassword(object.password),
   }
   return validUser
+}
+
+export const toUpdateUser = (object: any): UpdateUser => {
+  const updateUser: UpdateUser = {
+    name: parseName(object.name),
+    phone: parsePhone(object.phone),
+    email: parseEmail(object.email),
+  }
+
+  return updateUser
 }

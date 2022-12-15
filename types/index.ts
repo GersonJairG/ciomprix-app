@@ -27,3 +27,8 @@ export interface LoginFields {
   email: string
   password: string
 }
+
+export interface UpdateFields {
+  name: string
+  phone: string
+}

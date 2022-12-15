@@ -20,7 +20,7 @@ export const MlUserInfo = ({
 }: MlUserInfoProps) => {
   return simple ? (
     <div className="group flex w-full px-2 my-4 py-2 text-sm text-neutral-700 border border-pink-300 rounded-xl">
-      <div className="relative rounded-full w-16 h-16 mr-3">
+      <div className="relative rounded-full w-14 h-14 ml-2 mr-4">
         <Image src={profileImg} alt="profile" fill />
       </div>
       <div className="flex flex-col justify-center">

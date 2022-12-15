@@ -1,7 +1,7 @@
 import type { NextApiRequest, NextApiResponse } from 'next'
 
 import { conn } from '@/utils/database'
-import { toNewUser } from '@/utils/checks'
+import { toNewUser, toUpdateUser } from '@/utils/checks'
 import { ResponseType } from '@/types/user'
 import { encrypt } from '@/utils/bcryptjs'
 
@@ -41,6 +41,32 @@ export default async function handler(
 
         return res.status(200).json({
           message: `The user ${email} has been created successfully.`,
+          data: response?.rows[0],
+        })
+      } catch (error: any) {
+        return res.status(400).json({ message: error.message })
+      }
+
+    // UpdateUser
+    case 'PUT':
+      try {
+        const updatedUser = toUpdateUser(body)
+        const { name, phone, email } = updatedUser
+
+        const userExistQuery = 'SELECT * FROM users WHERE email = $1 LIMIT 1;'
+        const userExist = await conn?.query(userExistQuery, [email])
+
+        if (!userExist?.rowCount) {
+          return res.status(404).json({ message: 'Not Found User.' })
+        }
+
+        const query = 'UPDATE users SET name = $1, phone = $2 WHERE email = $3 RETURNING *;'
+        const values = [name, phone, email]
+
+        const response = await conn?.query(query, values)
+
+        return res.status(200).json({
+          message: `The user ${email} has been updated successfully.`,
           data: response?.rows[0],
         })
       } catch (error: any) {
