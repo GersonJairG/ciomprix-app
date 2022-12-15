@@ -29,6 +29,7 @@ export default function Login() {
       return
     }
     setInfoUser(response.data)
+    redirect('/profile')
     setLoading(false)
   }
 
