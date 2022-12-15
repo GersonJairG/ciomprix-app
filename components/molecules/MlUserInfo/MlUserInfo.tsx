@@ -20,12 +20,12 @@ export const MlUserInfo = ({
 }: MlUserInfoProps) => {
   return simple ? (
     <div className="group flex w-full px-2 my-4 py-2 text-sm text-neutral-700 border border-pink-300 rounded-xl">
-      <div className="relative rounded-full w-14 h-14 ml-2 mr-4">
-        <Image sizes='default' src={profileImg} alt="photo-profile-mobile" fill />
+      <div className="relative rounded-full w-12 h-12 ml-2 mr-4">
+        <Image sizes='default' src={profileImg} alt="photo-profile-mobile" fill className='object-cover' />
       </div>
-      <div className="flex flex-col justify-center">
-        <span>{name}</span>
-        <span className="text-pink-500">{email}</span>
+      <div className="flex flex-col justify-center truncate">
+        <span className='truncate ml-2'>{name}</span>
+        <span className="truncate ml-2 text-pink-500">{email}</span>
       </div>
     </div>
   ) : (
@@ -54,9 +54,9 @@ export const MlUserInfo = ({
               <Menu.Item>
                 {({ active }) => (
                   <div className="group flex w-full justify-around rounded-md px-2 py-2 text-sm text-neutral-700">
-                    <div className="flex flex-col justify-center">
-                      <span>{name}</span>
-                      <span className="text-pink-500">{email}</span>
+                    <div className="flex flex-col justify-center truncate">
+                      <span className='truncate mr-3'>{name}</span>
+                      <span className="truncate mr-3 text-pink-500">{email}</span>
                     </div>
                     <div className="relative rounded-full w-16 h-16">
                       <Image sizes='default' src={profileImg} alt="photo-profile" fill />

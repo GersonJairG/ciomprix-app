@@ -3,7 +3,6 @@ import storage from 'redux-persist/lib/storage'
 import { persistReducer } from 'redux-persist'
 import thunk from 'redux-thunk'
 
-import alertReducer from 'slices/alertSlice'
 import authReducer from 'slices/authSlice'
 
 const persistConfig = {
@@ -14,8 +13,7 @@ const persistConfig = {
 }
 
 const rootReducer = combineReducers({
-  auth: authReducer,
-  alert: alertReducer
+  auth: authReducer
 })
 
 const persistReducerRoot = persistReducer(persistConfig, rootReducer)

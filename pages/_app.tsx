@@ -1,10 +1,13 @@
 import 'styles/globals.css'
+import 'react-toastify/dist/ReactToastify.css'
+
 import type { NextComponentType } from 'next'
 import type { AppProps } from 'next/app'
 import { ReactNode } from 'react'
 import { Provider } from 'react-redux'
 import { PersistGate } from 'redux-persist/integration/react'
 import { persistStore } from 'redux-persist'
+import { ToastContainer } from 'react-toastify'
 
 import { store } from 'store'
 
@@ -23,6 +26,7 @@ export default function App({ Component, pageProps }: CustomAppProps) {
       <Provider store={store}>
         <Auth>
           <Component {...pageProps} />
+          <ToastContainer />
         </Auth>
       </Provider>
     </PersistGate>

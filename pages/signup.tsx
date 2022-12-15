@@ -3,16 +3,15 @@ import { useRouter } from 'next/router'
 
 import { MlSignupForm } from 'components/molecules'
 import { Layout, Seo } from 'components/templates'
-import useAlert from 'hooks/useAlert'
 import useAuth from 'hooks/useAuth'
 import type { SignUpDataUser } from 'types/user'
 import { createUser } from 'services/users'
+import { errorAlert, successAlert } from 'utils/alerts'
 
 import SignupSvg from '/public/images/signup.svg'
 
 export default function SignUp() {
   const { push: redirect } = useRouter()
-  const { showErrorAlert, showSuccessAlert } = useAlert()
   const { setLoading } = useAuth()
 
   async function signUp(data: SignUpDataUser) {
@@ -20,11 +19,11 @@ export default function SignUp() {
     const response = await createUser(data)
     if (!response?.data) {
       setLoading(false)
-      response.message && showErrorAlert(response.message)
+      response.message && errorAlert(response.message)
       return
     }
     setLoading(false)
-    showSuccessAlert('Successful registration')
+    successAlert('Successful registration')
     redirect('/login')
   }
 

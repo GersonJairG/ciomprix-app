@@ -4,17 +4,16 @@ import { useRouter } from 'next/router'
 
 import { MlUpdateForm } from 'components/molecules/'
 import { Layout, Seo, WithPrivateRoute } from 'components/templates'
-import useAlert from 'hooks/useAlert'
 import useAuth from 'hooks/useAuth'
 import { updateUser } from 'services/users'
 import { UpdateDataUser } from 'types/user'
+import { errorAlert, successAlert } from 'utils/alerts'
 
 import profileImg from '/public/images/profile.png'
 
 export default function Profile() {
   const { user, setInfoUser, setLoading } = useAuth()
   const { push: redirect } = useRouter()
-  const { showErrorAlert, showSuccessAlert } = useAlert()
 
   if (!user) {
     redirect('/')
@@ -27,12 +26,12 @@ export default function Profile() {
 
     if (!response?.data) {
       setLoading(false)
-      response.message && showErrorAlert(response.message)
+      response.message && errorAlert(response.message)
       return
     }
     setInfoUser(response.data)
     setLoading(false)
-    showSuccessAlert('Data updated successfully.')
+    successAlert('Data updated successfully.')
   }
 
   return (
