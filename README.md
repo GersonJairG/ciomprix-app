@@ -59,6 +59,7 @@ To check the tasks breakdown, please refer to the GitHub Project [Ciomprix App](
 - yup (Form validations)
 - react-icons (Icons)
 - redux-persist (State persistence)
+- react-toastify (Alerts)
 
 - pg (Connection to db postgres)
 - bcryptjs (Password encryption)
