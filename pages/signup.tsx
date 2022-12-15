@@ -2,7 +2,7 @@ import Image from 'next/image'
 import { useRouter } from 'next/router'
 
 import { MlSignupForm } from 'components/molecules'
-import { Layout } from 'components/templates'
+import { Layout, Seo } from 'components/templates'
 import useAlert from 'hooks/useAlert'
 import useAuth from 'hooks/useAuth'
 import type { SignUpDataUser } from 'types/user'
@@ -30,6 +30,7 @@ export default function SignUp() {
 
   return (
     <Layout theme="light" withoutFooter>
+      <Seo templateTitle='Sign Up' />
       <main className="h-screen pt-20 pb-10 mx-auto px-10 flex flex-col md:px-28 bg-gray-100">
         <div
           className={`flex justify-evenly w-full items-center flex-col lg:flex-row-reverse basis-full`}

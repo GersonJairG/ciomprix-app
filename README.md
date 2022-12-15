@@ -81,6 +81,11 @@ Taking advantage of the ability of NextJS to be able to implement APIs within th
 
 To request the information from these endpoints I used the Fetch API and this allowed me to obtain the necessary information to render in the respective views.
 
+A postgres database created with
+Supabase, which has an option that allows us to use it through a traditional connection.
+
+More details at: [documentation supabase](https://supabase.com/database) (Just Postgres)
+
 #### Components
 
 - **Atoms**: The atoms include AtAlert, AtButton, AtCheckbox, AtInput, AtLoader and AtLogo components.

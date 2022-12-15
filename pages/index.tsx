@@ -3,7 +3,7 @@ import Link from 'next/link'
 import { AtButton } from 'components/atoms'
 import { MlCard } from 'components/molecules'
 import { OrHero } from 'components/organisms'
-import { Layout } from 'components/templates'
+import { Layout, Seo } from 'components/templates'
 import { data as peopleData } from 'utils/people'
 
 function startFreeTrial() {
@@ -13,6 +13,7 @@ function startFreeTrial() {
 export default function Home() {
   return (
     <Layout>
+      <Seo templateTitle='Home' />
       <main>
         <OrHero callToAction={startFreeTrial} />
         {/* Our Mission */}
