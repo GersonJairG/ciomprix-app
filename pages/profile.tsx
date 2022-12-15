@@ -7,7 +7,7 @@ import { Layout, WithPrivateRoute } from 'components/templates'
 import useAlert from 'hooks/useAlert'
 import useAuth from 'hooks/useAuth'
 import { updateUser } from 'services/users'
-import { UpdateFields } from 'types'
+import { UpdateDataUser } from 'types/user'
 
 import profileImg from '/public/images/profile.png'
 
@@ -21,7 +21,7 @@ export default function Profile() {
     return
   }
 
-  async function update(data: UpdateFields) {
+  async function update(data: UpdateDataUser) {
     setLoading(true)
     const response = user && (await updateUser({ ...data, email: user.email }))
 

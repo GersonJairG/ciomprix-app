@@ -3,11 +3,11 @@ import { SubmitHandler, useForm } from 'react-hook-form'
 import { yupResolver } from '@hookform/resolvers/yup'
 
 import { AtButton, AtInput } from 'components/atoms'
-import type { LoginFields } from 'types'
+import type { CredentialsUser } from 'types/user'
 import { LoginFormSchema } from 'schemas'
 
 interface MlLoginFormProps {
-  login: (data: LoginFields) => void
+  login: (data: CredentialsUser) => void
 }
 
 export const MlLoginForm = ({ login }: MlLoginFormProps) => {
@@ -18,9 +18,9 @@ export const MlLoginForm = ({ login }: MlLoginFormProps) => {
     handleSubmit,
     reset,
     formState: { errors },
-  } = useForm<LoginFields>(formOptions)
+  } = useForm<CredentialsUser>(formOptions)
 
-  const onSubmit: SubmitHandler<LoginFields> = (data) => {
+  const onSubmit: SubmitHandler<CredentialsUser> = (data) => {
     login(data)
   }
 

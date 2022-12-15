@@ -1,4 +1,4 @@
-import { NewUser, UpdateUser, ValidUser } from 'types/user'
+import { NewUser, UserPublic, CredentialsUser } from 'types/user'
 
 export async function getUsers() {
   try {
@@ -32,7 +32,7 @@ export async function createUser(newUser: NewUser) {
   }
 }
 
-export async function updateUser(updatedUser: UpdateUser) {
+export async function updateUser(updatedUser: UserPublic) {
   try {
     const response = await fetch('/api/users/', {
       body: JSON.stringify(updatedUser),
@@ -49,7 +49,7 @@ export async function updateUser(updatedUser: UpdateUser) {
   }
 }
 
-export const validateUser = async (validUser: ValidUser) => {
+export const validateUser = async (validUser: CredentialsUser) => {
   try {
     const response = await fetch('/api/users/sign_in', {
       body: JSON.stringify(validUser),

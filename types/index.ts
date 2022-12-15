@@ -14,21 +14,3 @@ export interface MenuOption {
   name: string
   path: string
 }
-
-export interface SignUpFields {
-  name: string
-  phone: string
-  email: string
-  password: string
-  confirmPassword: string
-}
-
-export interface LoginFields {
-  email: string
-  password: string
-}
-
-export interface UpdateFields {
-  name: string
-  phone: string
-}

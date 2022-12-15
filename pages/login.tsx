@@ -5,7 +5,7 @@ import { MlLoginForm } from 'components/molecules'
 import { Layout } from 'components/templates'
 import useAuth from 'hooks/useAuth'
 import useAlert from 'hooks/useAlert'
-import type { LoginFields } from 'types'
+import type { CredentialsUser } from 'types/user'
 import { validateUser } from 'services/users'
 
 import loginSvg from '/public/images/login.svg'
@@ -20,7 +20,7 @@ export default function Login() {
     return
   }
 
-  async function login(data: LoginFields) {
+  async function login(data: CredentialsUser) {
     setLoading(true)
     const response = await validateUser(data)
 

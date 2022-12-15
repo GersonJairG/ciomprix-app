@@ -4,10 +4,10 @@ import { yupResolver } from '@hookform/resolvers/yup'
 
 import { AtButton, AtInput } from 'components/atoms'
 import { SignUpFormSchema } from 'schemas'
-import type { SignUpFields } from 'types'
+import type { SignUpDataUser } from 'types/user'
 
 interface MlSignupFormProps {
-  signUp: (data: SignUpFields) => void
+  signUp: (data: SignUpDataUser) => void
 }
 
 export const MlSignupForm = ({ signUp }: MlSignupFormProps) => {
@@ -18,9 +18,9 @@ export const MlSignupForm = ({ signUp }: MlSignupFormProps) => {
     handleSubmit,
     reset,
     formState: { errors },
-  } = useForm<SignUpFields>(formOptions)
+  } = useForm<SignUpDataUser>(formOptions)
 
-  const onSubmit: SubmitHandler<SignUpFields> = (data) => {
+  const onSubmit: SubmitHandler<SignUpDataUser> = (data) => {
     signUp(data)
   }
 

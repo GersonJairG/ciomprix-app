@@ -3,11 +3,11 @@ import { yupResolver } from '@hookform/resolvers/yup'
 
 import { AtButton, AtInput } from 'components/atoms'
 import { UpdateFormSchema } from 'schemas'
-import type { UpdateFields } from 'types'
+import type { UpdateDataUser } from 'types/user'
 
 interface MlUpdateFormProps {
-  update: (data: UpdateFields) => void
-  currentData?: UpdateFields
+  update: (data: UpdateDataUser) => void
+  currentData?: UpdateDataUser
 }
 
 export const MlUpdateForm = ({ update, currentData }: MlUpdateFormProps) => {
@@ -18,9 +18,9 @@ export const MlUpdateForm = ({ update, currentData }: MlUpdateFormProps) => {
     handleSubmit,
     reset,
     formState: { errors },
-  } = useForm<UpdateFields>(formOptions)
+  } = useForm<UpdateDataUser>(formOptions)
 
-  const onSubmit: SubmitHandler<UpdateFields> = (data) => {
+  const onSubmit: SubmitHandler<UpdateDataUser> = (data) => {
     update(data)
   }
 

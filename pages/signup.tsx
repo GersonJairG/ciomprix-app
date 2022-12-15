@@ -5,7 +5,7 @@ import { MlSignupForm } from 'components/molecules'
 import { Layout } from 'components/templates'
 import useAlert from 'hooks/useAlert'
 import useAuth from 'hooks/useAuth'
-import type { SignUpFields } from 'types'
+import type { SignUpDataUser } from 'types/user'
 import { createUser } from 'services/users'
 
 import SignupSvg from '/public/images/signup.svg'
@@ -15,7 +15,7 @@ export default function SignUp() {
   const { showErrorAlert, showSuccessAlert } = useAlert()
   const { setLoading } = useAuth()
 
-  async function signUp(data: SignUpFields) {
+  async function signUp(data: SignUpDataUser) {
     setLoading(true)
     const response = await createUser(data)
     if (!response?.data) {
