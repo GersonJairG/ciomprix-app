@@ -13,7 +13,7 @@ import profileImg from '/public/images/profile.png'
 export default function Profile() {
   const { user, setInfoUser } = useAuth()
   const { push: redirect } = useRouter()
-  const { showErrorAlert } = useAlert()
+  const { showErrorAlert, showSuccessAlert } = useAlert()
 
   if (!user) {
     redirect('/')
@@ -27,6 +27,7 @@ export default function Profile() {
       response.message && showErrorAlert(response.message)
       return
     }
+    showSuccessAlert('Data updated successfully.')
     setInfoUser(response.data)
   }
 
